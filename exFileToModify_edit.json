@@ -1,1 +1,1 @@
-{"page1": {"initialSettings": {"position": 13, "color": {"some_prop": "nested object"}}, "available-filters": {"name-filter": {"column": "name", "sort": "desc"}}}}
+{"page1": {"initialSettings": {"position": "hello", "color": {"some_prop": "nested object"}}, "available-filters": {"name-filter": {"column": "name", "sort": "desc"}}}}

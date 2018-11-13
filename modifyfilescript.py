@@ -29,13 +29,14 @@ def parse_modification_file(filepath):
     with open(filepath, 'r') as file_object:
         line = file_object.readline()
         while line: # process the file line by line
-            args = line.split(":",1)
+            args = line.split(":", 1)
             if len(args) != 2: # check if the change match with the expect number of parameters
                 raise ValueError("The change "+line+" should have two parameters")
             else:
-                args[0] = args[0].replace("\"", "").replace("\n", "").replace(" ", "") # eliminate useless characters
-                #args[1] = args[1].replace("\"", "").replace("\n", "").replace(" ", "") # eliminate useless characters
+                args[0] = args[0].replace("\"", "") \
+                .replace("\n", "").replace(" ", "") # eliminate useless characters
                 change_location = args[0].split(".") # separate the key into a key list
+                print(args[1])
                 obj = json.loads(args[1])
                 changes_to_apply.append((change_location, obj))
             line = file_object.readline()
