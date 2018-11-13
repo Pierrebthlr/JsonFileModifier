@@ -36,7 +36,6 @@ def parse_modification_file(filepath):
                 args[0] = args[0].replace("\"", "") \
                 .replace("\n", "").replace(" ", "") # eliminate useless characters
                 change_location = args[0].split(".") # separate the key into a key list
-                print(args[1])
                 obj = json.loads(args[1])
                 changes_to_apply.append((change_location, obj))
             line = file_object.readline()
@@ -135,14 +134,15 @@ def modify_file(json_file_to_modify, modification_file):
             print("doesn't exist, this change can't be applied\n")
 
     #write of the changes in a new json file
-    json_file_modified = json_file_to_modify.split(".json")[0]
-    json_file_modified += "_edit.json" #create a new file name
-    with open(json_file_modified, 'w+') as json_file_modified:
+    json_file_modified_path = json_file_to_modify.split(".json")[0]
+    json_file_modified_path += "_edit.json" #create a new file name
+    with open(json_file_modified_path, 'w+') as json_file_modified:
         try:
             json_file_modified.write(json.dumps(obj))
         except ValueError:
             print("error loading the JSON file: "+json_file_to_modify)
         finally:
+            print("Modify file has been created at this path: "+json_file_modified_path)
             json_file_modified.close()
 
 
